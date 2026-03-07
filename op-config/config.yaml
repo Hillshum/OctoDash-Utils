@@ -1,0 +1,30 @@
+plugins:
+  softwareupdate:
+    checks:
+      octoprint:
+        disabled: true
+  tracking:
+    enabled: false
+  virtual_printer:
+    enabled: true
+serial:
+  autoconnect: true
+  baudrate: 250000
+  port: VIRTUAL
+server:
+  commands:
+    serverRestartCommand: sudo service octoprint restart
+    systemRestartCommand: sudo shutdown -r now
+    systemShutdownCommand: sudo shutdown -h now
+  firstRun: false
+  onlineCheck:
+    enabled: false
+  pluginBlocklist:
+    enabled: false
+  secretKey: 4e7ae3fa78d93e33bbb
+  seenWizards:
+    backup: null
+    corewizard: 3
+    file_check: 1
+    octodash: 1
+    tracking: null
