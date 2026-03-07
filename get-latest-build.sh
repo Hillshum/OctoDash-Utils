@@ -13,6 +13,6 @@ RUN_ID=$(gh -R UnchartedBull/OctoDash run list -b $BRANCH -w CI -L 1 --json name
 INFO=$(gh api /repos/UnchartedBull/OctoDash/actions/runs/$RUN_ID/artifacts | jq '.artifacts[]  | select(.name | contains(".whl"))')
 NAME=$(echo $INFO | jq -r '.name')
 URL=$(echo $INFO | jq -r '.archive_download_url')
-echo "Downloading $NAME from $URL"
+echo "Downloading $NAME"
 
 gh api $URL > artifacts/$NAME
