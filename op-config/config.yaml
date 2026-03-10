@@ -26,5 +26,4 @@ server:
     backup: null
     corewizard: 3
     file_check: 1
-    octodash: 1
     tracking: null
