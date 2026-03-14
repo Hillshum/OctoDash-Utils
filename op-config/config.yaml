@@ -1,4 +1,8 @@
 plugins:
+  classicwebcam:
+    _config_version: 1
+    snapshot: http://octotest.station/webcam/snapshot
+    stream: http://octotest.station/webcam/stream
   softwareupdate:
     checks:
       octoprint:
