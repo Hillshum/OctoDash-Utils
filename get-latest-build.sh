@@ -21,8 +21,19 @@ RUN_ID=$(echo $RUN | jq -r '.databaseId')
 
 
 INFO=$(gh api /repos/UnchartedBull/OctoDash/actions/runs/$RUN_ID/artifacts | jq '.artifacts[]  | select(.name | contains(".whl"))')
+
+# if INFO is empty, then we have a zip file
+if [ -z "$INFO" ]; then
+  INFO=$(gh api /repos/UnchartedBull/OctoDash/actions/runs/$RUN_ID/artifacts | jq '.artifacts[]  | select(.name | contains("build"))')
+  ZIP=1
+fi
 NAME=$(echo $INFO | jq -r '.name')
 URL=$(echo $INFO | jq -r '.archive_download_url')
 echo "Downloading $NAME"
 
 gh api $URL > artifacts/$NAME
+
+if [ "$ZIP" = "1" ]; then
+  unzip artifacts/$NAME -d artifacts
+  rm artifacts/$NAME
+fi  
