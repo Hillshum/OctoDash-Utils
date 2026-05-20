@@ -43,8 +43,3 @@ if [ -z "$INFO" ]; then
 else
   download_raw_artifact "$INFO"
 fi
-
-# if [ "$ZIP" = "1" ]; then
-#   unzip artifacts/$NAME -d artifacts
-#   rm artifacts/$NAME
-# fi  
